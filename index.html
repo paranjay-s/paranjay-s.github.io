@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Paranjay Sharma | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Paranjay Sharma" />
+
+    <style>
+        :root {
+            --bg: #050816;
+            --bg-alt: #0b1020;
+            --accent: #4f46e5;
+            --accent-soft: rgba(79, 70, 229, 0.12);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: #1f2933;
+            --card: #111827;
+            --danger: #f97373;
+            --success: #4ade80;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .identity {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .contact-line {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .contact-line span {
+            margin-right: 12px;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip-link {
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #020617;
+        }
+
+        .chip-link span.icon {
+            font-size: 1rem;
+        }
+
+        /* Navigation (Dashboard toggles) */
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav button {
+            flex: 1 1 auto;
+            min-width: 120px;
+            border-radius: 999px;
+            padding: 8px 14px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .nav button:hover {
+            background: rgba(148, 163, 184, 0.1);
+            color: var(--text);
+        }
+
+        .nav button.active {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: #e0e7ff;
+            font-weight: 600;
+        }
+
+        /* Panels */
+
+        .panel {
+            display: none;
+            margin-top: 16px;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .panel-card {
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 18px 18px 4px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            font-size: 1.2rem;
+        }
+
+        .section-note {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .card .meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        ul {
+            padding-left: 18px;
+            margin: 4px 0 10px;
+            font-size: 0.9rem;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .pill {
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.78rem;
+            background: rgba(22, 163, 74, 0.1);
+            border: 1px solid rgba(22, 163, 74, 0.4);
+            color: #bbf7d0;
+        }
+
+        .badge span.icon {
+            font-size: 0.8rem;
+        }
+
+        .badge-danger {
+            background: rgba(248, 113, 113, 0.12);
+            border-color: rgba(248, 113, 113, 0.4);
+            color: #fecaca;
+        }
+
+        .grid-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+
+        .skills-list {
+            font-size: 0.88rem;
+        }
+
+        .skills-list li {
+            margin-bottom: 4px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @media (max-width: 720px) {
+            .two-col {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            header {
+                align-items: flex-start;
+            }
+            .nav {
+                border-radius: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="identity">
+            <div class="name">PARANJAY SHARMA</div>
+            <div class="tagline">Quantitative Finance · Machine Learning · Statistical Modeling</div>
+            <div class="contact-line">
+                <span>📞 +91 9589265871</span>
+                <span>✉️ bparanjay.sharma2004@gmail.com</span>
+            </div>
+        </div>
+
+        <div class="links">
+            <a class="chip-link" href="https://github.com/paranjay-s" target="_blank" rel="noopener">
+                <span class="icon">🐙</span>
+                <span>GitHub</span>
+            </a>
+            <a class="chip-link" href="https://in.linkedin.com/in/paranjay-sharma-87ps" target="_blank" rel="noopener">
+                <span class="icon">💼</span>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation: acts like dashboard toggles -->
+    <nav class="nav">
+        <button class="active" data-target="summary">Summary</button>
+        <button data-target="experience">Experience</button>
+        <button data-target="education">Education</button>
+        <button data-target="projects">Projects</button>
+        <button data-target="skills">Skills</button>
+        <button data-target="contact">Contact</button>
+    </nav>
+
+    <!-- SUMMARY PANEL -->
+    <section id="summary" class="panel active">
+        <div class="panel-card">
+            <h2>Profile Summary</h2>
+            <p class="section-note">Third-year student focused on quantitative finance and applied machine learning.</p>
+            <div class="two-col">
+                <div>
+                    <p class="muted">
+                        Third-year college student with a strong passion for quantitative finance and hands-on experience
+                        with Python, ML, statistics, and financial econometrics.
+                    </p>
+                    <p class="muted">
+                        Completed a three-month internship at Walford Capital as a Quant Intern and currently working as a
+                        Research Consultant at WorldQuant. Independently developed a statistical arbitrage model for a
+                        mean-reversion-based pairs strategy, which is undergoing live testing.
+                    </p>
+                    <p class="muted">
+                        Now aiming to build professional-grade low-latency models using C++ and deepen understanding of
+                        statistics, stochastic processes, and market microstructure.
+                    </p>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>Snapshot</h3>
+                        <ul>
+                            <li>Interned at Walford Capital (Quant)</li>
+                            <li>Research Consultant at WorldQuant</li>
+                            <li>IMC Prosperity 3 Algo Trading competition participant</li>
+                            <li>DC Hackathon – 3rd Place (Neural nets from scratch)</li>
+                        </ul>
+                        <div class="pill-row">
+                            <span class="pill">Quant Finance</span>
+                            <span class="pill">Python</span>
+                            <span class="pill">Time Series</span>
+                            <span class="pill">C++ (in progress)</span>
+                            <span class="pill">Stat Arb</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE PANEL -->
+    <section id="experience" class="panel">
+        <div class="panel-card">
+            <h2>Professional Experience</h2>
+            <p class="section-note">Hands-on exposure to pricing models, alpha generation, and research workflows.</p>
+
+            <div class="card">
+                <h3>Research Consultant — WorldQuant</h3>
+                <div class="meta">Apr 2025 – Present · Remote</div>
+                <ul>
+                    <li>Conduct alpha research and feature engineering across multiple datasets.</li>
+                    <li>Optimize datasets and pipelines using ML and APIs for automation.</li>
+                </ul>
+                <span class="badge"><span class="icon">📈</span>Alpha Research</span>
+            </div>
+
+            <div class="card">
+                <h3>Quant Intern — Walford Capital</h3>
+                <div class="meta">Mar 2025 – Jun 2025</div>
+                <ul>
+                    <li>Built pricing models using Kalman-based state-space models, Monte Carlo methods, and Black–Scholes.</li>
+                    <li>
+                        Developed a meta-model pipeline integrating:
+                        causal inference, XGBoost, PCA, K-Means, PPO RL for portfolio optimization,
+                        volatility-based backtester, and sentiment analysis (crewAI).
+                    </li>
+                    <li>Assisted in model testing, strategy optimization, and dataset management.</li>
+                    <li>
+                        Offered a role (cash or equity), but chose to focus on deepening statistical and analytical foundations.
+                    </li>
+                </ul>
+                <div class="pill-row">
+                    <span class="pill">Kalman Filters</span>
+                    <span class="pill">State-Space Models</span>
+                    <span class="pill">XGBoost</span>
+                    <span class="pill">PPO RL</span>
+                    <span class="pill">Volatility Backtesting</span>
+                </div>
+            </div>
+
+            <h2 style="margin-top:18px;">Competitions & Hackathons</h2>
+
+            <div class="card">
+                <h3>IMC Prosperity 3 — Algorithmic Trading Competition</h3>
+                <div class="meta">Apr 2025</div>
+                <ul>
+                    <li>Ranked: UK = 45 · Algo Trading = 288 · Global = 477 / 12,620 teams.</li>
+                    <li>Designed and executed algorithmic trading strategies under competition constraints.</li>
+                    <li>
+                        Code (algorithms + manual rounds):
+                        <!-- Replace # with your real GitHub repo link -->
+                        <a href="#" target="_blank">GitHub Repo (add link)</a>
+                    </li>
+                </ul>
+                <span class="badge"><span class="icon">🏅</span>Top Global Performance</span>
+            </div>
+
+            <div class="card">
+                <h3>DC Hackathon (Developer Club)</h3>
+                <div class="meta">Aug 2025 · 3rd Place</div>
+                <ul>
+                    <li>
+                        Built a multi-layer neural network from scratch, implementing forward and backward propagation
+                        algorithms using pure Python and NumPy.
+                    </li>
+                    <li>Developed perceptron-based logic gate classifiers.</li>
+                    <li>
+                        Code:
+                        <!-- Replace # with your real GitHub repo link -->
+                        <a href="#" target="_blank">GitHub Repo (add link)</a>
+                    </li>
+                </ul>
+                <span class="badge"><span class="icon">🏆</span>Neural Net from Scratch</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION PANEL -->
+    <section id="education" class="panel">
+        <div class="panel-card">
+            <h2>Education</h2>
+            <p class="section-note">Strong foundation in computer science, statistics, and quantitative methods.</p>
+
+            <div class="card">
+                <h3>Masters of Computer Applications (MCA)</h3>
+                <div class="meta">
+                    International Institute of Professional Studies, Devi Ahilya Vishwavidyalaya · Expected 2028
+                </div>
+                <ul>
+                    <li>Admitted through CUET UG entrance; ranked in top 500 from 60k+ candidates (home state).</li>
+                    <li>Full Tuition Scholarship: Mukhya Mantri Medhavi Vidyarthi Yojana.</li>
+                    <li>
+                        Relevant Coursework:
+                        Data Structures & Algorithms, Probability and Hypothesis Testing,
+                        System Programming, Data Science.
+                    </li>
+                </ul>
+                <span class="badge"><span class="icon">🎓</span>Scholarship Recipient</span>
+            </div>
+
+            <div class="card">
+                <h3>High School</h3>
+                <div class="meta">The Emerald Heights International School, Indore & SHPS</div>
+                <ul>
+                    <li>10th Class: 93% (The Emerald Heights International School, Indore).</li>
+                    <li>12th Class: 82% (SHPS).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS PANEL -->
+    <section id="projects" class="panel">
+        <div class="panel-card">
+            <h2>Projects</h2>
+            <p class="section-note">Selected work in statistical arbitrage, time-series modeling, and research tooling.</p>
+
+            <div class="card">
+                <h3>Statistical Arbitrage Model (Live Testing)</h3>
+                <div class="meta">Mean-Reversion Pairs Trading</div>
+                <ul>
+                    <li>Designed a mean-reversion-based pairs trading strategy using advanced statistical techniques.</li>
+                    <li>Incorporated ML components to optimize entry/exit thresholds and risk allocation.</li>
+                    <li>Currently undergoing live testing to validate performance and robustness.</li>
+                </ul>
+                <div class="pill-row">
+                    <span class="pill">Stat Arb</span>
+                    <span class="pill">Pairs Trading</span>
+                    <span class="pill">Time Series</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Cointegrated Pairs Finder</h3>
+                <div class="meta">
+                    <!-- Replace # with your real GitHub repo link -->
+                    <a href="#" target="_blank">GitHub Repo (add link)</a>
+                </div>
+                <ul>
+                    <li>Tool to identify cointegrated pairs for pairs trading strategies.</li>
+                    <li>Uses statistical tests and time-series diagnostics to screen candidate assets.</li>
+                </ul>
+                <div class="pill-row">
+                    <span class="pill">Cointegration</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Quant Research</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS PANEL -->
+    <section id="skills" class="panel">
+        <div class="panel-card">
+            <h2>Skills</h2>
+            <p class="section-note">Blend of quantitative, programming, and trading skills.</p>
+
+            <div class="grid-skills">
+                <div class="card">
+                    <h3>Quant & ML</h3>
+                    <ul class="skills-list">
+                        <li>Statistical & causal inference</li>
+                        <li>Copulas & joint distributions</li>
+                        <li>Time Series Analysis</li>
+                        <li>Hypothesis Testing</li>
+                        <li>Kalman Filters & State-Space Models</li>
+                        <li>Stochastic Calculus (in progress)</li>
+                        <li>Supervised, Unsupervised, Reinforcement & Deep Learning</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Programming</h3>
+                    <ul class="skills-list">
+                        <li>Python (Advanced) · NumPy, pandas, scikit-learn, etc.</li>
+                        <li>C++ (learning for low-latency models)</li>
+                        <li>Automation & n8n</li>
+                        <li>REST APIs integration</li>
+                        <li>Git & GitHub</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Trading & Research</h3>
+                    <ul class="skills-list">
+                        <li>Alpha Generation & Research Workflows</li>
+                        <li>Backtesting Frameworks</li>
+                        <li>Volatility Targeting</li>
+                        <li>Basic Portfolio Optimization</li>
+                        <li>Statistical Arbitrage</li>
+                        <li>Market Microstructure Analysis</li>
+                        <li>Risk Management · Kelly Criterion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PANEL -->
+    <section id="contact" class="panel">
+        <div class="panel-card">
+            <h2>Contact</h2>
+            <p class="section-note">Open to internships, quant roles, research collaborations, and hackathons.</p>
+
+            <div class="contact-grid">
+                <div class="card">
+                    <h3>Reach Out</h3>
+                    <ul class="skills-list">
+                        <li>📧 Email: <a href="mailto:bparanjay.sharma2004@gmail.com">bparanjay.sharma2004@gmail.com</a></li>
+                        <li>📞 Phone: +91 9589265871</li>
+                        <li>🐙 GitHub: <a href="https://github.com/paranjay-s" target="_blank">github.com/paranjay-s</a></li>
+                        <li>💼 LinkedIn:
+                            <a href="https://in.linkedin.com/in/paranjay-sharma-87ps" target="_blank">
+                                linkedin.com/in/paranjay-sharma-87ps
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Collaboration Interests</h3>
+                    <ul class="skills-list">
+                        <li>Quant trading strategy research</li>
+                        <li>Statistical arbitrage & market microstructure</li>
+                        <li>Backtesting & risk modeling</li>
+                        <li>Low-latency infra and C++ model deployment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="muted" style="margin-top:12px;">
+                For code samples, please check my GitHub repositories and competition projects.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        © <span id="year"></span> Paranjay Sharma · Built with HTML, CSS & vanilla JS · Hosted on GitHub Pages
+    </footer>
+</div>
+
+<script>
+    // Dashboard-like toggles
+    const buttons = document.querySelectorAll('.nav button');
+    const panels = document.querySelectorAll('.panel');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            panels.forEach(p => {
+                if (p.id === target) {
+                    p.classList.add('active');
+                } else {
+                    p.classList.remove('active');
+                }
+            });
+
+            // Scroll to top of content on mobile
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
