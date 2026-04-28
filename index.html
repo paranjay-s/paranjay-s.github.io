@@ -314,10 +314,13 @@
                 <span class="icon"> · </span>
                 <span>LinkedIn</span>
             </a>
+            <a class="chip-link" href="https://www.kaggle.com/paranjaysharma8888" target="_blank" rel="noopener">
+                <span class="icon"> · </span>
+                <span>Kaggle</span>
+            </a>
         </div>
     </header>
 
-    <!-- Navigation: acts like dashboard toggles -->
     <nav class="nav">
         <button class="active" data-target="summary">Summary</button>
         <button data-target="experience">Experience</button>
@@ -328,7 +331,6 @@
         <button data-target="contact">Contact</button>
     </nav>
 
-    <!-- SUMMARY PANEL -->
     <section id="summary" class="panel active">
         <div class="panel-card">
             <h2>Profile Summary</h2>
@@ -362,7 +364,6 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE PANEL -->
     <section id="experience" class="panel">
         <div class="panel-card">
             <h2>Professional Experience</h2>
@@ -382,7 +383,7 @@
                 <h3>Quant Intern — Walford Capital</h3>
                 <div class="meta">Mar 2025 – Jun 2025</div>
                 <ul>
-                    <li>Being a part of the quant team at the startup, having  its origin from IIT Madras,
+                    <li>Being a part of the quant team at the startup, having its origin from IIT Madras,
 Built pricing models using Kalman-based state-space models, Monte Carlo methods, and Black–Scholes.</li>
                     <li>
                         Developed a meta-model pipeline integrating:
@@ -406,6 +407,29 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
             <h2 style="margin-top:18px;">Competitions & Hackathons</h2>
 
             <div class="card">
+                <h3>iRage AlgoArena — Short Horizon Return Prediction Challenge</h3>
+                <div class="meta">Mar 2026 – Apr 2026</div>
+                <ul>
+                    <li>Ranked 1st / 800+ national candidates shortlisted (Rs. 2,00,000 Prize).</li>
+                    <li>Developed a ML regression model to forecast short-horizon returns.</li>
+                    <li>
+                        View Submission on GitHub: 
+                        <a href="https://github.com/paranjay-s/iRage_Algo_Arena_Submission" target="_blank">iRage Algo Arena</a>
+                    </li>
+                </ul>
+                <span class="badge"><span class="icon"> </span>1st Place Winner</span>
+            </div>
+
+            <div class="card">
+                <h3>Wunder Predictorium Challenge — Wunder Fund HFT</h3>
+                <div class="meta">Dec 2025 – Mar 2026</div>
+                <ul>
+                    <li>Ranked 74th / 4,900+ global participants (Top 1.5%).</li>
+                    <li>Engineered predictive ML models to forecast multiple variables across varying horizons using anonymized LOB data.</li>
+                </ul>
+            </div>
+
+            <div class="card">
                 <h3>Quant-Insider-Market-Making-Challenge- organized by IIT(ISM) Dhanbad</h3>
                 <div class="meta">Dec 2025</div>
                 <ul>
@@ -415,12 +439,10 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
                     <li>Executed the strategy on all the options of Nifty (in total 440 options) in realtime simultaneously on real world data</li>
                     <li>
                         Codebase:
-                        <!-- Replace # with your real GitHub repo link -->
                         <a href="https://github.com/paranjay-s/Quant-Insider-Market-Making-Challenge-Submission.git" target="_blank"> GitHub Repository Link</a>
                     </li>
                     <li>
                         Certificate Link:
-                        <!-- Replace # with your real GitHub repo link -->
                         <a href="https://unstop.com/certificate-preview/24595e9f-cd15-4cf3-a14b-be769864c12c?utm_campaign=site-emails" target="_blank"> Link</a>
                     </li>
 
@@ -436,7 +458,6 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
                     <li>Designed and executed algorithmic trading strategies under competition constraints.</li>
                     <li>
                         Code (algorithms + manual rounds):
-                        <!-- Replace # with your real GitHub repo link -->
                         <a href="https://github.com/paranjay-s/IMC_PROSPERITY_3_2025.git" target="_blank">ALGORITHMS AND CODES</a>
                     </li>
                 </ul>
@@ -454,7 +475,6 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
                     <li>Developed perceptron-based logic gate classifiers.</li>
                     <li>
                         Code:
-                        <!-- Replace # with your real GitHub repo link -->
                         <a href="https://github.com/23f2005639/Perceptron.git" target="_blank">Hackathon Project Link</a>
                     </li>
                 </ul>
@@ -463,7 +483,6 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
         </div>
     </section>
 
-    <!-- EDUCATION PANEL -->
     <section id="education" class="panel">
         <div class="panel-card">
             <h2>Education</h2>
@@ -496,33 +515,53 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
         </div>
     </section>
 
-    <!-- PROJECTS PANEL -->
     <section id="projects" class="panel">
         <div class="panel-card">
             <h2>Projects</h2>
 
             <div class="card">
-                <h3>Statistical Arbitrage Model (Prototype Testing)</h3>
-                <div class="meta">Mean-Reversion Pairs Trading</div>
-                    <a href="https://github.com/paranjay-s/stat_arb_bot.git" target="_blank">Project Link</a>
+                <h3>Cash Future Arbitrage (ZeroMQ Microservices)</h3>
+                <div class="meta">Present</div>
                 <ul>
-                    <li>Designed a mean-reversion-based pairs trading strategy using statistical techniques.</li>
-                    <li>uses ByBit API</li>
-                    <li>Clustering, RL(PPO), Kelly-Criterion, Kill-switch, Real-time Spread and Z-score signal detector</li>
-                    <li>Liquidity Check, optimal limit order execution</li>
+                    <li>Building a full-stack decoupled ZeroMQ microservices architecture for Nifty 50 basis arbitrage, currently improving the achieved 0.25ms median paper-execution latency.</li>
+                    <li>Integrating live statistical inference and ONNX-compiled ML risk engines for real-time signal verification.</li>
+                    <li><strong>Stack:</strong> Python, ZeroMQ, Redis, MLflow, ONNX, FastAPI, React.</li>
+                    <li>
+                        <a href="https://github.com/paranjay-s/Mid_frequency_Cash_Future_arb_in_Progress" target="_blank">View Project on GitHub: Cash Future Arbitrage</a>
+                    </li>
+                </ul>
+                <div class="pill-row">
+                    <span class="pill">ZeroMQ</span>
+                    <span class="pill">ONNX</span>
+                    <span class="pill">Microservices</span>
+                    <span class="pill">Python</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Crypto Statistical Arbitrage Bot (Decoupled Architecture)</h3>
+                <div class="meta">Dec 2024 – Feb 2025</div>
+                <ul>
+                    <li><strong>Research:</strong> Pipeline discovering multivariate cointegrated pairs via PCA, clustering, graphs, and RL (PPO); tracking copula/band strategies. 
+                        <a href="https://github.com/paranjay-s/strat_adv" target="_blank">View Research on GitHub</a>
+                    </li>
+                    <li><strong>Execution:</strong> ByBit mean-reversion prototype with live liquidity checks, Kill-switch, and Kelly-Criterion position sizing. 
+                        <a href="https://github.com/paranjay-s/stat_arb_bot.git" target="_blank">View Code on GitHub</a>
+                    </li>
+                    <li><strong>Stack:</strong> Python, PyTorch, Stable-Baselines3, NetworkX, Sklearn, Statsmodels.</li>
                     <li>Currently undergoing live testing to validate performance and robustness.</li>
                 </ul>
                 <div class="pill-row">
                     <span class="pill">Stat Arb</span>
                     <span class="pill">Pairs Trading</span>
                     <span class="pill">Time Series</span>
+                    <span class="pill">RL (PPO)</span>
                 </div>
             </div>
 
             <div class="card">
                 <h3>Cointegrated Pairs Finder</h3>
                 <div class="meta">
-                    <!-- Replace # with your real GitHub repo link -->
                     <a href="https://www.kaggle.com/code/paranjaysharma8888/coint-code-1" target="_blank">Project Link</a>
                 </div>
                 <ul>
@@ -539,7 +578,7 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
 
             <div class="card">
                 <h3>Predicted Asset (potential higher returns) List generator using Classifier ML Model (Prototype)</h3>
-                    <a href="https://github.com/paranjay-s/stock-predictor-ML-model.git" target="_blank">Project Link</a>
+                    <a href="https://github.com/paranjay-s/asset-list-predictor-ML-model.git" target="_blank">Project Link</a>
                 <ul>
                     <li>Data & Features: historical data from yfinance and a suite of technical indicators from the ta library. </li>
                     <li>Target Generation: binary targets (easily toggle between “buy” and “sell” signals).</li>
@@ -576,10 +615,18 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
     </section>
 
 
-    <!-- Certificates And Courses PANEL -->
     <section id="certificates" class="panel">
         <div class="panel-card">
             <h2>Certificates And Courses</h2>
+            
+            <div class="card">
+                <h3>Applications of AI for Anomaly Detection</h3>
+                <div class="meta">NVIDIA Deep Learning Institute</div>
+                    <a href="https://learn.nvidia.com/certificates?id=Op2bOwNuQuCoThKIMoWsKg" target="_blank">Certificate Link</a>
+                <ul>
+                    <li>Core concepts and applications of AI for Anomaly Detection</li>
+                </ul>
+            </div>
 
             <div class="card">
                 <h3>Akuna Capital Options 101 - Issued Jan 2025 - By Akuna Capital</h3>
@@ -593,7 +640,6 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
             <div class="card">
                 <h3>Master Financial Econometrics for Time Series Analysis - Issued Sep 2025 - Udemy</h3>
                 <div class="meta">
-                    <!-- Replace # with your real GitHub repo link -->
                     <a href="https://www.udemy.com/certificate/UC-446725ac-e3bc-4f2d-9bdf-b9e64365a2f8/" target="_blank">Certificate Link</a>
                 </div>
                 <ul>
@@ -614,20 +660,10 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
                     <li>Machine Learning , Deep Reinforcement Learning, Python, Markov Chain and Regime Shifting Models, Backtesting </li>
                 </ul>
             </div>
-
-            <div class="card">
-                <h3>Statistical Arbitrage Bot Build for Crypto with Python - Udemy - Issued Jan 2025</h3>
-                    <a href="https://www.udemy.com/certificate/UC-a96f75a8-5c22-42c6-80f4-02d37008f06e/" target="_blank">Certificate Link</a>
-                <ul>
-                    <li>- Advance Python, API, websocket, json files</li>
-                    <li>- Kill switch, Liquidity Check, Kelly Criterion, automated Backtesting, optimal limit order execution</li>
-                </ul>
-            </div>
             
         </div>
     </section>
 
-    <!-- SKILLS PANEL -->
     <section id="skills" class="panel">
         <div class="panel-card">
             <h2>Skills</h2>
@@ -654,33 +690,18 @@ Built pricing models using Kalman-based state-space models, Monte Carlo methods,
                     <h3>Programming and Tech Stack</h3>
                     <ul class="skills-list">
                         <li>Python - NumPy, pandas, scikit-learn, scipy, sklearn</li>
-                        <li>C++ - ultra low-latency models, data structures and algorithm(arrray, stack, queue, trees, graphs), competitive programming(currently 1 star CodeChef)</li>
+                        <li>C++ - low-latency models, data structures and algorithm(arrray, stack, queue, trees, graphs), competitive programming</li>
+                        <li>Rust</li>
                         <li>Linux- Basic Commands, memory allocation, Kernel Optimization</li>
                         <li>System Design- Kafka</li>
                         <li>Git & GitHub</li>
                     </ul>
                 </div>
 
-                <div class="card">
-                    <h3>Trading & Research</h3>
-                    <ul class="skills-list">
-                        <li>Market Microstructure Analysis(L2 Order-book depth analysis)</li>
-                        <li>Gamma Scalping</li>
-                        <li>Delta Hedging</li>
-                        <li>Volatility Smile and Curves</li>
-                        <li>Alpha Generation & Research Workflows</li>
-                        <li>Backtesting, Event Driven Stress-testing Frameworks</li>
-                        <li>Volatility Targeting</li>
-                        <li>Basic Portfolio Optimization</li>
-                        <li>Statistical, Latency Arbitrages</li>
-                        <li>Risk Management · Kelly Criterion</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT PANEL -->
     <section id="contact" class="panel">
         <div class="panel-card">
             <h2>Contact</h2>
